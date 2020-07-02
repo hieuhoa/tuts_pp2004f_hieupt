@@ -25,15 +25,3 @@ Route::get('/ticket/{slug?}','TicketsController@show');
 Route::get('/ticket/{slug?}/edit','TicketsController@edit');
 Route::post('/ticket/{slug?}/edit','TicketsController@update');
 Route::post('/ticket/{slug?}/delete','TicketsController@destroy');
-
-
-
-
-
-
-// Route::get('/',    function()    
-// {
-// return    'Welcome    to    our    home    page!';
-// });
-
-// Route::get()
