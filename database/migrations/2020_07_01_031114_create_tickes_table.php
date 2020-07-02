@@ -16,10 +16,10 @@ class CreateTickesTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title',255);
-               $table->text('content');
-               $table->string('slug')->nullable();
-               $table->tinyInteger('status')->default(1);
-               $table->integer('user_id')->nullable();
+            $table->text('content');
+            $table->string('slug')->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }
