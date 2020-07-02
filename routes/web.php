@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', 'PagesController@home');
+Route::get('/about','PagesController@about');
+Route::get('/contact','TicketsController@create');
+Route::post('/contact','TicketsController@store');
+
+
+
+
+// Route::get('/',    function()    
+// {
+// return    'Welcome    to    our    home    page!';
+// });
+
+// Route::get()
