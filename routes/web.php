@@ -16,12 +16,49 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'PagesController@home');
-Route::get('/about','PagesController@about');
-Route::get('/contact','TicketsController@create');
-Route::post('/contact','TicketsController@store');
 
-Route::get('/tickets','TicketsController@index');
-Route::get('/ticket/{slug?}','TicketsController@show');
-Route::get('/ticket/{slug?}/edit','TicketsController@edit');
-Route::post('/ticket/{slug?}/edit','TicketsController@update');
-Route::post('/ticket/{slug?}/delete','TicketsController@destroy');
+
+Route::get('/about', 'PagesController@about');
+Route::get('/contact', 'TicketsController@create');
+Route::post('/contact', 'TicketsController@store');
+
+Route::get('/tickets', 'TicketsController@index');
+Route::get('/ticket/{slug?}', 'TicketsController@show');
+Route::get('/ticket/{slug?}/edit', 'TicketsController@edit');
+Route::post('/ticket/{slug?}/edit', 'TicketsController@update');
+Route::post('/ticket/{slug?}/delete', 'TicketsController@destroy');
+
+Route::post('/comment', 'CommentsController@newComment');
+//Auth::routes();
+
+Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('users/register', 'Auth\RegisterController@register');
+Route::get('home', 'PagesController@home');
+Route::get('users/logout', 'Auth\LoginController@logout');
+Route::get('users/login', 'Auth\LoginController@showLoginForm')
+->name('login');
+Route::post('users/login', 'Auth\LoginController@login');
+
+//Building an admin area
+Route::group(
+    ['prefix' => 'admin' ,
+    'namespace' => 'Admin' ,
+    'middleware' => 'manager'
+],
+    function () {
+        Route::get('users', [
+            'as'=> 'admin.users.index', 
+            'uses' => 'UsersController@index']);
+        Route::get('roles', 'RolesController@index');
+        Route::get('roles/create', 'RolesController@create');
+        Route::post('roles/create', 'RolesController@store');
+        //Assign roles to users
+        Route::get('users/{id?}/edit', 'UsersController@edit');
+        Route::post('users/{id?}/edit', 'UsersController@update');
+    }
+);
+
+//Assign roles to users
+// Route::get('users/{id?}/edit', 'UsersController@edit');
+// Route::post('users/{id?}/edit','UsersController@update');
+// Route::get('/home', 'HomeController@index')->name('home');
