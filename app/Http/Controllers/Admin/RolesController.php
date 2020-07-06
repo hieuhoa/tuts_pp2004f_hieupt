@@ -24,6 +24,7 @@ class RolesController extends Controller
     public function store(RoleFormRequest $request)
     {
         Role::create(['name' => $request->get('name')]);
+        
         return redirect('/admin/roles/create')
         ->with('status', 'A new role has been created!');
     }
