@@ -9,7 +9,7 @@
             <p> {!! $ticket->content !!} </p>
         </div>
         <a href="{!! action('TicketsController@edit', $ticket->slug) !!}" class="btn btn-info pull-left">Edit</a>
-        <form method="post" action="{!!	action('TicketsController@destroy',	$ticket->slug) !!}" class="pull-left">
+        <form method="post" action="{!! action('TicketsController@destroy', $ticket->slug) !!}" class="pull-left">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div>
                 <button type="submit" class="btn btn-warning">Delete</button>
@@ -20,10 +20,10 @@
     <div class="well well bs-component">
         <form class="form-horizontal" method="post" action="/comment">
             @foreach($errors->all() as $error)
-            <p class="alert	alert-danger">{{ $error }}</p>
+            <p class="alert alert-danger">{{ $error }}</p>
             @endforeach
             @if(session('status'))
-            <div class="alert	alert-success">
+            <div class="alert alert-success">
                 {{ session('status') }}
             </div>
             @endif
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button type="reset" class="btn	btn-default">Cancel</button>
+                        <button type="reset" class="btn btn-default">Cancel</button>
                         <button type="submit" class="btn btn-primary">Post</button>
                     </div>
                 </div>

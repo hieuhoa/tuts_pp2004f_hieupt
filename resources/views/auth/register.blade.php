@@ -5,7 +5,7 @@
     <div class="well well bs-component">
         <form class="form-horizontal" method="post">
             @foreach ($errors->all() as $error)
-            <p class="alert	alert-danger">{{ $error }}</p>
+            <p class="alert alert-danger">{{ $error }}</p>
             @endforeach
             {!! csrf_field() !!}
             <fieldset>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button type="reset" class="btn	btn-default">Cancel</button>
+                        <button type="reset" class="btn btn-default">Cancel</button>
                         <button type="submit" class="btn btn-primary">Submit</butt on>
                     </div>
                 </div>

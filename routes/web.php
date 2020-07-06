@@ -55,10 +55,6 @@ Route::group(
         //Assign roles to users
         Route::get('users/{id?}/edit', 'UsersController@edit');
         Route::post('users/{id?}/edit', 'UsersController@update');
+        Route::get('/', 'PagesController@home');
     }
 );
-
-//Assign roles to users
-// Route::get('users/{id?}/edit', 'UsersController@edit');
-// Route::post('users/{id?}/edit','UsersController@update');
-// Route::get('/home', 'HomeController@index')->name('home');

@@ -6,7 +6,7 @@
         <div class="panel-heading">
             <h2> Tickets </h2>
         </div>
-        @if	(session('status'))
+        @if (session('status'))
                 <div class="alert alert-success">
           {{ session('status') }}
                 </div>
