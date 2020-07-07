@@ -56,5 +56,17 @@ Route::group(
         Route::get('users/{id?}/edit', 'UsersController@edit');
         Route::post('users/{id?}/edit', 'UsersController@update');
         Route::get('/', 'PagesController@home');
+        //a new posts
+        Route::get('posts', 'PostsController@index');
+        Route::get('posts/create', 'PostsController@create');
+        Route::post('posts/create', 'PostsController@store');
+        Route::get('posts/{id?}/edit', 'PostsController@edit');
+        Route::post('posts/{id?}/edit','PostsController@update');
+        //Create and view categories
+        Route::get('categories', 'CategoriesController@index');
+        Route::get('categories/create', 'CategoriesController@create');
+        Route::post('categories/create', 'CategoriesController@store');
+
+
     }
 );
