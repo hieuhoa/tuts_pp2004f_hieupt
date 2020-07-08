@@ -88,9 +88,8 @@ class TicketsController extends Controller
     public function update($slug, TicketFormRequest $request)
     {
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
-        $ticket->title = $request->get('title');
-        $ticket->content = $request->get('content');
 
+        $ticket->title_content = $request->get('title_content');
         $ticket->status = 1;
 
         if($request->get('status') != null)  {
@@ -98,7 +97,7 @@ class TicketsController extends Controller
         }
         $ticket->save();
 
-        return redirect(action('TicketsController@edit', $ticket->slug))
+        return redirect("/ticket/". $ticket->slug."/edit")
             ->with('status','The ticket ' . $slug . ' has been updated!');
     }
     /**

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class Manager
 {
     public function handle($request, Closure $next)
-    {
+     {
         if (!Auth::check()) {
 
             return redirect('users/login');
@@ -26,5 +26,5 @@ class Manager
                 return redirect('/');
             }
         }
-    }
+     }
 }
