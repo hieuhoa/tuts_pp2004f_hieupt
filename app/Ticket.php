@@ -16,6 +16,11 @@ class Ticket extends Model
 
     protected $guarded = ['id'];
 
+    public function setTitleContentAttribute($value)
+    {
+        $this->attributes['title'].$this->attributes['content'];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -23,7 +28,7 @@ class Ticket extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'post_id');
+        return $this->morphMany(Comment::class, 'post');
     }
     
     public function getTitle()

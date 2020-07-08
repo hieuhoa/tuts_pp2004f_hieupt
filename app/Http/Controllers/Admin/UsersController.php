@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UserEditFormRequest;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -29,13 +28,12 @@ class UsersController extends Controller
     public function update($id, UserEditFormRequest $request)
     {
         $user = User::whereId($id)->firstOrFail();
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
+
+        $user->name_email = $request->get('name_email');
         $password = $request->get('password');
 
         if ($password != ""){
-
-            $user->password = Hash::make($password);
+            $user->password = $password;
         }
 
         $user->save();
