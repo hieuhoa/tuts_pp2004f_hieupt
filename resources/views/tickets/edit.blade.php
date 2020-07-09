@@ -14,15 +14,15 @@
             @endif
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <fieldset>
-                <legend>Edit ticket</legend>
+                <legend>{{__('Edit ticket')}}</legend>
                 <div class="form-group">
-                    <label for="title" class="col-lg-2 control-label">Title</label>
+                    <label for="title" class="col-lg-2 control-label">{{__('Title')}}</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="title" name="title" value="{!! $ticket->title !!}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="content" class="col-lg-2 control-label">Content</l abel>
+                    <label for="content" class="col-lg-2 control-label">{{__('Content')}}</l abel>
                         <div class="col-lg-10">
                             <textarea class="form-control" rows="3" id="content" name="content">{!! $ticket->content !!}</textarea>
                         </div>
@@ -34,8 +34,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
-                        <button class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Update</butt on>
+                        <button class="btn btn-default">{{__('Cancel')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('Update')}}</butt on>
                     </div>  
                 </div>
             </fieldset>
