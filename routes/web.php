@@ -66,7 +66,10 @@ Route::group(
         Route::get('categories', 'CategoriesController@index');
         Route::get('categories/create', 'CategoriesController@create');
         Route::post('categories/create', 'CategoriesController@store');
-    });
+    }
+);
 //Dislay all blog route 
 Route::get('/blog','BlogController@index');
 Route::get('/blog/{slug?}' , 'BlogController@show');
+//Route Language
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'Language\LanguageController@switchLang']);

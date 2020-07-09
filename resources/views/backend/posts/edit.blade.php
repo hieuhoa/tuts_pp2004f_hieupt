@@ -34,8 +34,7 @@
                             <select class="form-control" id="categories" name="categories[]" multiple>
                                 @foreach($categories as $category)
                                 <option value="{!! $category->id !!}" @if(in_array ($category->id, $selectedCategories))
-                                    selected="selected" @endif >{!! $category->
-                                    name !!}
+                                    selected="selected" @endif >{!! $category->name !!}
                                 </option>
                                 @endforeach
                             </select>
