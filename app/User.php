@@ -32,6 +32,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'provider_id',
+        'provider_name'
     ];
 
     public function setPasswordAttribute($value)
@@ -43,4 +45,13 @@ class User extends Authenticatable
     {
         $this->attributes['name'].$this->attributes['email'];
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    // public function comments(){
+    //     return $this->hasMany(Comment::class);
+    // }
 }

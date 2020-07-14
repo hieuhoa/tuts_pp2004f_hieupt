@@ -17,8 +17,8 @@ class AddColumnUsersTable extends Migration
 
 
             $table->boolean('admin_chk')->default(0)->after('password');
+            $table->string('password')->nullable()->change();
 
-            //
         });
     }
 
@@ -32,6 +32,7 @@ class AddColumnUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->dropColumn('admin_chk');
+            $table->string('password')->nullable(false)->change();
         });
     }
 }

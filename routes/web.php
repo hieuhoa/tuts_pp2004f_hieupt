@@ -43,11 +43,11 @@ Route::post('users/login', 'Auth\LoginController@login');
 Route::group(
     ['prefix' => 'admin' ,
     'namespace' => 'Admin' ,
-    'middleware' => 'manager'
+    // 'middleware' => 'manager'
 ],
     function () {
         Route::get('users', [
-            'as'=> 'admin.users.index', 
+            'as'=> 'admin.users.index',
             'uses' => 'UsersController@index']);
         Route::get('roles', 'RolesController@index');
         Route::get('roles/create', 'RolesController@create');
@@ -61,15 +61,25 @@ Route::group(
         Route::get('posts/create', 'PostsController@create');
         Route::post('posts/create', 'PostsController@store');
         Route::get('posts/{id?}/edit', 'PostsController@edit');
-        Route::post('posts/{id?}/edit','PostsController@update');
+        Route::post('posts/{id?}/edit', 'PostsController@update');
         //Create and view categories
         Route::get('categories', 'CategoriesController@index');
         Route::get('categories/create', 'CategoriesController@create');
         Route::post('categories/create', 'CategoriesController@store');
     }
 );
-//Dislay all blog route 
-Route::get('/blog','BlogController@index');
-Route::get('/blog/{slug?}' , 'BlogController@show');
+//Dislay all blog route
+Route::get('/blog', 'BlogController@index');
+Route::get('/blog/{slug?}', 'BlogController@show');
 //Route Language
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'Language\LanguageController@switchLang']);
+
+Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')
+->name('login.provider')
+//Can be used on other social platforms
+//他のソーシャルでもつかえる
+->where('driver', implode('|', config('auth.socialite.drivers')));
+
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
+

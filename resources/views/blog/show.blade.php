@@ -6,13 +6,15 @@
         <div class="content">
             <h2 class="header">{!! $post->title !!}</h2>
             <p> {!! $post->content !!} </p>
+            <h2><p> {!! $post->user->name !!} </p></h2>
         </div>
         <div class="clearfix"></div>
     </div>
     @foreach($comments as $comment)
     <div class="well well bs-component">
         <div class="content">
-            {!! $comment->content !!}
+            {!! $comment->content !!}</br>
+            <h2>{!! $comment->user->name !!}</br></h2>     
         </div>
     </div>
     @endforeach
