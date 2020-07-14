@@ -4,6 +4,9 @@
 <div class="container col-md-6 col-md-offset-3">
     <div class="well well bs-component">
         <form class="form-horizontal" method="post">
+            @if (session('oauth_error'))
+            {{ session('oauth_error') }}
+            @endif
             @foreach ($errors->all() as $error)
             <p class="alert alert-danger">{{ $error }}</p>
             @endforeach
@@ -30,6 +33,11 @@
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         <button type="submit" class="btn btn-primary">{{__('Login')}}</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                    <li><a href="{{ route('login.provider', 'google') }}"  class="btn btn-secondary">{{ __('Google Sign in') }}</a></li>
                     </div>
                 </div>
             </fieldset>
