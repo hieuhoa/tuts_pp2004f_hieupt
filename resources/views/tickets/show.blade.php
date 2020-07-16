@@ -10,6 +10,7 @@
         </div>
         <a href="{!! action('TicketsController@edit', $ticket->slug) !!}" class="btn btn-info pull-left">Edit</a>
         <form method="post" action="{!! action('TicketsController@destroy', $ticket->slug) !!}" class="pull-left">
+            <input type="hidden" name="_method" value="delete"/>   
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div>
                 <button type="submit" class="btn btn-warning">Delete</button>

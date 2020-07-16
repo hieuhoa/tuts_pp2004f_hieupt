@@ -97,7 +97,7 @@ class TicketsController extends Controller
         }
         $ticket->save();
 
-        return redirect("/ticket/". $ticket->slug."/edit")
+        return redirect("/tickets/". $ticket->slug."/edit")
             ->with('status','The ticket ' . $slug . ' has been updated!');
     }
     /**

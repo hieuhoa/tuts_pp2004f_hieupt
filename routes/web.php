@@ -22,14 +22,9 @@ Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'TicketsController@create');
 Route::post('/contact', 'TicketsController@store');
 
-Route::get('/tickets', 'TicketsController@index');
-Route::get('/ticket/{slug?}', 'TicketsController@show');
-Route::get('/ticket/{slug?}/edit', 'TicketsController@edit');
-Route::post('/ticket/{slug?}/edit', 'TicketsController@update');
-Route::post('/ticket/{slug?}/delete', 'TicketsController@destroy');
+Route::resource('tickets', 'TicketsController');
 
 Route::post('/comment', 'CommentsController@newComment');
-//Auth::routes();
 
 Route::get('users/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('users/register', 'Auth\RegisterController@register');
@@ -45,7 +40,8 @@ Route::group(
     'namespace' => 'Admin' ,
     // 'middleware' => 'manager'
 ],
-    function () {
+    function () 
+    {
         Route::get('users', [
             'as'=> 'admin.users.index',
             'uses' => 'UsersController@index']);
@@ -57,15 +53,11 @@ Route::group(
         Route::post('users/{id?}/edit', 'UsersController@update');
         Route::get('/', 'PagesController@home');
         //a new posts
-        Route::get('posts', 'PostsController@index');
-        Route::get('posts/create', 'PostsController@create');
-        Route::post('posts/create', 'PostsController@store');
-        Route::get('posts/{id?}/edit', 'PostsController@edit');
-        Route::post('posts/{id?}/edit', 'PostsController@update');
+        Route::resource('posts', 'PostsController')
+        ->except('show','destroy');
         //Create and view categories
-        Route::get('categories', 'CategoriesController@index');
-        Route::get('categories/create', 'CategoriesController@create');
-        Route::post('categories/create', 'CategoriesController@store');
+        Route::resource('categories', 'CategoriesController')
+        ->only('index','create','store');
     }
 );
 //Dislay all blog route
@@ -82,4 +74,10 @@ Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')
 
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
-
+//画像をアップロード
+Auth::routes();
+Route::group(['middleware' => 'auth'], function () 
+{
+    Route::resource('users','UsersController');
+    Route::post('avatar', 'UsersController@update_avatar');
+});

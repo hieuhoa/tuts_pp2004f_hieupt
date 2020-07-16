@@ -34,6 +34,7 @@ class PostsController extends Controller
         $categories = Category::all();
 
         return view('backend.posts.create', compact('categories'));
+        // dd($categories);
     }
 
     /**

@@ -7,6 +7,7 @@
             <h2 class="header">{!! $post->title !!}</h2>
             <p> {!! $post->content !!} </p>
             <h2><p> {!! $post->user->name !!} </p></h2>
+            <Like :post-id="{{ json_encode($post->id) }}"></Like>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -14,7 +15,7 @@
     <div class="well well bs-component">
         <div class="content">
             {!! $comment->content !!}</br>
-            <h2>{!! $comment->user->name !!}</br></h2>     
+            <h2> <img src="/storage/avatars/{{ $comment->user->avatar }}" width="50" height="50"></br></h2>  
         </div>
     </div>
     @endforeach

@@ -39,6 +39,7 @@
                             @role('manager')
                             <li><a href="/admin">Admin</a></li>
                             @endrole
+                            <li><a href="/users/">{{__('User Profile')}}</a></li>
                             <li><a href="/users/logout">{{__('Logout')}}</a></li>
                         @else
                         <li><a href="/users/register">{{__('Register')}}</a></li>

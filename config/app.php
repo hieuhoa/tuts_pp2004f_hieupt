@@ -179,6 +179,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class
 
     ],
 
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form'    =>    Collective\Html\FormFacade::class,
         'Html'    =>    Collective\Html\HtmlFacade::class,
+        'Avatar'    => Laravolt\Avatar\Facade::class,
 
     ],
 
