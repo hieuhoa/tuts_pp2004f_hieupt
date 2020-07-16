@@ -7,16 +7,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\Hash;
 use Avatar;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+// use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
+// use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Illuminate\Database\Eloquent\User as EloquentUser;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
-use Spatie\MediaLibrary\Media;
+// use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+// use Spatie\MediaLibrary\Media;
 
 
-class User extends  Authenticatable implements HasMedia
+class User extends  Authenticatable
 {
-    use Notifiable , HasRoles, HasMediaTrait;
+    use Notifiable , HasRoles ;
 
     
 
