@@ -18,6 +18,7 @@
             <h2> <img src="/storage/avatars/{{ $comment->user->avatar }}" width="50" height="50"></br></h2>  
         </div>
     </div>
+    
     @endforeach
     <div class="well well bs-component">
         <form class="form-horizontal" method="post" action="/comment">
